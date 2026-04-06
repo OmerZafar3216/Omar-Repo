@@ -139,7 +139,7 @@
     function move(dir) { current = (current + dir + 5) % 5; update(); resetTimer(); }
     function goTo(i) { current = i; update(); resetTimer(); }
 
-    function startTimer() { timer = setInterval(() => { current = (current + 1) % 5; update(); }, 10000); }
+    function startTimer() { timer = setInterval(() => { current = (current + 1) % 5; update(); }, 20000); }
     function resetTimer() { clearInterval(timer); startTimer(); }
 
     carousel.addEventListener('mouseenter', () => { clearInterval(timer); document.getElementById('auto-status').textContent = 'Paused on hover'; });
