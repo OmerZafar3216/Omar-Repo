@@ -119,14 +119,6 @@
       <div class="dot" onclick="goTo(3)"></div>
       <div class="dot" onclick="goTo(4)"></div>
     </div>
-    <div class="audio-bar">
-      <span class="audio-label" id="audio-label">🎙 Slide 1: "Hi, I'm Omer Zafar — welcome to my portfolio."</span>
-      <button class="play-btn" id="play-btn" onclick="toggleAudio()">▶ Play Narration</button>
-    </div>
-    <div class="status-bar">
-      <span id="slide-counter">Slide 1 of 5</span>
-      <span id="auto-status">Auto-advancing · Hover to pause</span>
-    </div>
   </div>
 
   <div class="section" id="about">
@@ -142,7 +134,6 @@
       <div class="skill-card"><strong>Security</strong>Firewall rules, Wireless security</div>
       <div class="skill-card"><strong>Tools</strong>Cisco Packet Tracer, Aruba</div>
       <div class="skill-card"><strong>Programming</strong>Python, C, HTML, JavaScript</div>
-      <div class="skill-card"><strong>Support</strong>IT troubleshooting, System config</div>
     </div>
   </div>
 
@@ -165,12 +156,12 @@
   <div class="section" id="contact">
     <h2>Contact & Resources</h2>
     <p>Open to collaboration, internships, and professional networking discussions.</p>
-    <div class="contact-links">
+    <center><div class="contact-links">
       <a class="contact-link" href="https://www.linkedin.com" target="_blank">LinkedIn</a>
       <a class="contact-link" href="https://github.com" target="_blank">GitHub</a>
       <a class="contact-link" href="https://www.w3schools.com" target="_blank">W3Schools</a>
       <a class="contact-link" href="https://www.cisco.com" target="_blank">Cisco Docs</a>
-    </div>
+    </div></center>
   </div>
 
   <footer>© 2025 Omer Zafar — Network Engineering Portfolio</footer>
@@ -201,11 +192,11 @@
 
     function move(dir) { current = (current + dir + 5) % 5; update(); resetTimer(); }
     function goTo(i) { current = i; update(); resetTimer(); }
-    function startTimer() { timer = setInterval(() => { current = (current+1)%5; update(); }, 5000); }
+    function startTimer() { timer = setInterval(() => { current = (current+1)%5; update(); }, 10000); }
     function resetTimer() { clearInterval(timer); startTimer(); }
 
-    carousel.addEventListener('mouseenter', () => { clearInterval(timer); document.getElementById('auto-status').textContent = 'Paused on hover'; });
-    carousel.addEventListener('mouseleave', () => { startTimer(); document.getElementById('auto-status').textContent = 'Auto-advancing · Hover to pause'; });
+    document.getElementById('home').addEventListener('mouseenter', () => { clearInterval(timer); });
+    document.getElementById('home').addEventListener('mouseleave', () => { startTimer(); });
 
     function speak(text) {
       if ('speechSynthesis' in window) {
