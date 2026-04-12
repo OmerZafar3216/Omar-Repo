@@ -23,7 +23,7 @@
     .nav-btn:hover { background: rgba(255,255,255,0.35); }
     .nav-prev { left: 16px; }
     .nav-next { right: 16px; }
-    .bottom-bar { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 12px 20px; background: #1a1a2e; }
+    .bottom-bar { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; background: #1a1a2e; }
     .dot { width: 9px; height: 9px; border-radius: 50%; background: #555; cursor: pointer; transition: background 0.3s, transform 0.2s; }
     .dot.active { background: #a89ff0; transform: scale(1.3); }
     .play-btn { background: transparent; border: 1px solid #555; border-radius: 8px; padding: 5px 14px; font-size: 12px; cursor: pointer; color: #ccc; margin-left: 16px; }
@@ -110,14 +110,15 @@
     </div>
 
     <div class="bottom-bar" id="bottom-bar">
-      <div class="dot active" onclick="goTo(0)"></div>
-      <div class="dot" onclick="goTo(1)"></div>
-      <div class="dot" onclick="goTo(2)"></div>
-      <div class="dot" onclick="goTo(3)"></div>
-      <div class="dot" onclick="goTo(4)"></div>
-      <button class="play-btn" id="play-btn" onclick="toggleAudio()">▶ Narration</button>
-    </div>
+  <div style="display:flex; gap:12px; align-items:center;">
+    <div class="dot active" onclick="goTo(0)"></div>
+    <div class="dot" onclick="goTo(1)"></div>
+    <div class="dot" onclick="goTo(2)"></div>
+    <div class="dot" onclick="goTo(3)"></div>
+    <div class="dot" onclick="goTo(4)"></div>
   </div>
+  <button class="play-btn" id="play-btn" onclick="toggleAudio()">▶ Narration</button>
+</div>
 
   <div class="section" id="about">
     <h2>About Me</h2>
