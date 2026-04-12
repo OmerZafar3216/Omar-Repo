@@ -12,17 +12,13 @@
     nav a:hover { color: #fff; }
     .carousel-wrapper { position: relative; width: 100%; overflow: hidden; }
     .slides-track { display: flex; transition: transform 0.6s cubic-bezier(0.77,0,0.175,1); }
-    .slide { min-width: 100%; height: 420px; display: flex; align-items: center; justify-content: center; position: relative; }
+    .slide { min-width: 100%; height: 420px; display: flex; align-items: center; justify-content: center; position: relative; background-size: cover; background-position: center; }
+    .slide::before { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.52); z-index: 1; }
     .slide-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; z-index: 2; }
-    .slide-overlay h2 { font-size: 32px; font-weight: 500; color: #fff; margin-bottom: 10px; text-shadow: 0 1px 8px rgba(0,0,0,0.45); }
-    .slide-overlay p { font-size: 16px; color: rgba(255,255,255,0.92); max-width: 560px; line-height: 1.6; text-shadow: 0 1px 5px rgba(0,0,0,0.4); }
+    .slide-overlay h2 { font-size: 32px; font-weight: 500; color: #fff; margin-bottom: 10px; text-shadow: 0 1px 8px rgba(0,0,0,0.6); }
+    .slide-overlay p { font-size: 16px; color: rgba(255,255,255,0.92); max-width: 560px; line-height: 1.6; text-shadow: 0 1px 5px rgba(0,0,0,0.5); }
     .slide-badge { display: inline-block; font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 14px; background: rgba(255,255,255,0.2); color: #fff; border: 1px solid rgba(255,255,255,0.4); }
     .icon { font-size: 44px; margin-bottom: 12px; }
-    .s1 { background: linear-gradient(135deg, #534AB7 0%, #3C3489 100%); }
-    .s2 { background: linear-gradient(135deg, #0F6E56 0%, #1D9E75 100%); }
-    .s3 { background: linear-gradient(135deg, #185FA5 0%, #378ADD 100%); }
-    .s4 { background: linear-gradient(135deg, #854F0B 0%, #EF9F27 100%); }
-    .s5 { background: linear-gradient(135deg, #993556 0%, #D4537E 100%); }
     .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.35); color: #fff; width: 42px; height: 42px; border-radius: 50%; cursor: pointer; font-size: 22px; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
     .nav-btn:hover { background: rgba(255,255,255,0.35); }
     .nav-prev { left: 16px; }
@@ -65,7 +61,8 @@
   <div id="home">
     <div class="carousel-wrapper" id="carousel">
       <div class="slides-track" id="track">
-        <div class="slide s1">
+
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1400&auto=format&fit=crop')">
           <div class="slide-overlay">
             <span class="slide-badge">Welcome</span>
             <div class="icon">👋</div>
@@ -73,7 +70,8 @@
             <p>A network security student passionate about building secure and scalable infrastructure.</p>
           </div>
         </div>
-        <div class="slide s2">
+
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1510511459019-5dda7724fd87?w=1400&auto=format&fit=crop')">
           <div class="slide-overlay">
             <span class="slide-badge">Expertise</span>
             <div class="icon">🔒</div>
@@ -81,7 +79,8 @@
             <p>Specializing in firewalls, VPNs, VLANs, ACLs, and Cisco infrastructure design.</p>
           </div>
         </div>
-        <div class="slide s3">
+
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&auto=format&fit=crop')">
           <div class="slide-overlay">
             <span class="slide-badge">Tools</span>
             <div class="icon">⚙️</div>
@@ -89,7 +88,8 @@
             <p>Cisco Packet Tracer · Python · C · HTML · JavaScript · Aruba Switches</p>
           </div>
         </div>
-        <div class="slide s4">
+
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1400&auto=format&fit=crop')">
           <div class="slide-overlay">
             <span class="slide-badge">Projects</span>
             <div class="icon">🛠</div>
@@ -97,7 +97,8 @@
             <p>From enterprise switch configurations to hackathons — I build and test real network systems.</p>
           </div>
         </div>
-        <div class="slide s5">
+
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1400&auto=format&fit=crop')">
           <div class="slide-overlay">
             <span class="slide-badge">Connect</span>
             <div class="icon">📬</div>
@@ -105,10 +106,12 @@
             <p>Open to collaboration, internships, and networking. Find me on LinkedIn and GitHub.</p>
           </div>
         </div>
+
       </div>
       <button class="nav-btn nav-prev" onclick="move(-1)">&#8249;</button>
       <button class="nav-btn nav-next" onclick="move(1)">&#8250;</button>
     </div>
+
     <div class="dots" id="dots">
       <div class="dot active" onclick="goTo(0)"></div>
       <div class="dot" onclick="goTo(1)"></div>
