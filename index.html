@@ -187,15 +187,15 @@
     function startTimer() { timer = setInterval(() => { current = (current+1)%5; update(); }, 7000); }
     function resetTimer() { clearInterval(timer); startTimer(); }
 
-   home.addEventListener('mouseenter', () => {
+ const carousel = document.getElementById('carousel');
+carousel.addEventListener('mouseenter', () => {
   clearInterval(timer);
-  document.getElementById('carousel').classList.add('paused');
+  carousel.classList.add('paused');
 });
-home.addEventListener('mouseleave', () => {
+carousel.addEventListener('mouseleave', () => {
   startTimer();
-  document.getElementById('carousel').classList.remove('paused');
+  carousel.classList.remove('paused');
 });
-
     function speak(text) {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
