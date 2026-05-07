@@ -202,12 +202,6 @@
       <span id="topicErr" style="font-size:12px; color:red; display:none;">Please select a topic.</span>
     </div>
 
-    <div>
-      <label style="font-size:14px; font-weight:500; color:#333; display:block; margin-bottom:4px;">Message *</label>
-      <textarea id="message" rows="4" placeholder="Write your message here..." style="width:100%; padding:10px 14px; border:1px solid #ddd; border-radius:8px; font-size:14px; outline:none; resize:vertical;"></textarea>
-      <span id="msgErr" style="font-size:12px; color:red; display:none;">Message is required.</span>
-    </div>
-
     <div style="display:flex; align-items:center; gap:10px;">
       <input type="checkbox" id="agree">
       <label for="agree" style="font-size:13px; color:#555;">I agree to be contacted regarding my inquiry.</label>
@@ -302,9 +296,6 @@ document.querySelectorAll('.section').forEach(s => observer.observe(s));
 
   document.getElementById('topicErr').style.display = topic ? 'none' : 'block';
   if (!topic) valid = false;
-
-  document.getElementById('msgErr').style.display = message ? 'none' : 'block';
-  if (!message) valid = false;
 
   document.getElementById('agreeErr').style.display = agree ? 'none' : 'block';
   if (!agree) valid = false;
