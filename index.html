@@ -7,7 +7,9 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Segoe UI', sans-serif; background: #f4f4f6; color: #222; }
-    nav { background: #1a1a2e; padding: 10px 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+    body { padding-top: 70px; }
+    nav { background: #1a1a2e; padding: 10px 2rem; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; right: 0; z-index: 100; opacity: 0; transition: opacity 0.3s; }
+nav:hover { opacity: 1; }
     nav a { color: #ccc; text-decoration: none; font-size: 14px; letter-spacing: 0.05em; transition: color 0.2s; }
     nav a:hover { color: #fff; }
     .carousel-wrapper { position: relative; width: 100%; overflow: hidden; }
@@ -171,17 +173,59 @@
     </div>
   </div>
 
-  <div class="section" id="contact">
-    <h2>Contact & Resources</h2>
-    <p style="text-align:center;">Open to collaboration, internships, and professional networking discussions.</p>
-    <div class="contact-links">
-      <a class="contact-link" href="https://www.linkedin.com" target="_blank">LinkedIn</a>
-      <a class="contact-link" href="https://github.com" target="_blank">GitHub</a>
-      <a class="contact-link" href="https://www.w3schools.com" target="_blank">W3Schools</a>
-      <a class="contact-link" href="https://www.cisco.com" target="_blank">Cisco Docs</a>
-    </div>
-  </div>
+ <div class="section" id="contact">
+  <h2>Contact & Resources</h2>
+  <p style="text-align:center;">Open to collaboration, internships, and professional networking discussions.</p>
 
+  <form id="contactForm" style="max-width:560px; margin: 1.5rem auto 0; display:flex; flex-direction:column; gap:1rem;">
+    
+    <div>
+      <label style="font-size:14px; font-weight:500; color:#333; display:block; margin-bottom:4px;">Full Name *</label>
+      <input type="text" id="name" placeholder="Enter your name" style="width:100%; padding:10px 14px; border:1px solid #ddd; border-radius:8px; font-size:14px; outline:none;">
+      <span id="nameErr" style="font-size:12px; color:red; display:none;">Name is required.</span>
+    </div>
+
+    <div>
+      <label style="font-size:14px; font-weight:500; color:#333; display:block; margin-bottom:4px;">Email Address *</label>
+      <input type="email" id="email" placeholder="Enter your email" style="width:100%; padding:10px 14px; border:1px solid #ddd; border-radius:8px; font-size:14px; outline:none;">
+      <span id="emailErr" style="font-size:12px; color:red; display:none;">Please enter a valid email.</span>
+    </div>
+
+    <div>
+      <label style="font-size:14px; font-weight:500; color:#333; display:block; margin-bottom:4px;">Topic *</label>
+      <select id="topic" style="width:100%; padding:10px 14px; border:1px solid #ddd; border-radius:8px; font-size:14px; outline:none; background:#fff;">
+        <option value="">-- Select a topic --</option>
+        <option value="internship">Internship Opportunity</option>
+        <option value="collaboration">Collaboration</option>
+        <option value="networking">Professional Networking</option>
+        <option value="other">Other</option>
+      </select>
+      <span id="topicErr" style="font-size:12px; color:red; display:none;">Please select a topic.</span>
+    </div>
+
+    <div>
+      <label style="font-size:14px; font-weight:500; color:#333; display:block; margin-bottom:4px;">Message *</label>
+      <textarea id="message" rows="4" placeholder="Write your message here..." style="width:100%; padding:10px 14px; border:1px solid #ddd; border-radius:8px; font-size:14px; outline:none; resize:vertical;"></textarea>
+      <span id="msgErr" style="font-size:12px; color:red; display:none;">Message is required.</span>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:10px;">
+      <input type="checkbox" id="agree">
+      <label for="agree" style="font-size:13px; color:#555;">I agree to be contacted regarding my inquiry.</label>
+    </div>
+    <span id="agreeErr" style="font-size:12px; color:red; display:none;">You must agree before submitting.</span>
+
+    <button type="button" onclick="validateForm()" style="background:#534AB7; color:#fff; border:none; padding:12px; border-radius:8px; font-size:15px; cursor:pointer; transition:background 0.2s;">Send Message</button>
+    <p id="successMsg" style="text-align:center; color:green; font-size:14px; display:none;">✅ Message sent successfully!</p>
+  </form>
+
+  <div class="contact-links" style="margin-top:2rem;">
+    <a class="contact-link" href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+    <a class="contact-link" href="https://github.com" target="_blank">GitHub</a>
+    <a class="contact-link" href="https://www.w3schools.com" target="_blank">W3Schools</a>
+    <a class="contact-link" href="https://www.cisco.com" target="_blank">Cisco Docs</a>
+  </div>
+</div>
   <footer>© 2025 Omer Zafar — Network Engineering Portfolio</footer>
 
   <script>
@@ -240,6 +284,37 @@ carousel.addEventListener('mouseleave', () => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.15 });
 document.querySelectorAll('.section').forEach(s => observer.observe(s));
+
+    function validateForm() {
+  let valid = true;
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const topic = document.getElementById('topic').value;
+  const message = document.getElementById('message').value.trim();
+  const agree = document.getElementById('agree').checked;
+
+  document.getElementById('nameErr').style.display = name ? 'none' : 'block';
+  if (!name) valid = false;
+
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  document.getElementById('emailErr').style.display = emailValid ? 'none' : 'block';
+  if (!emailValid) valid = false;
+
+  document.getElementById('topicErr').style.display = topic ? 'none' : 'block';
+  if (!topic) valid = false;
+
+  document.getElementById('msgErr').style.display = message ? 'none' : 'block';
+  if (!message) valid = false;
+
+  document.getElementById('agreeErr').style.display = agree ? 'none' : 'block';
+  if (!agree) valid = false;
+
+  if (valid) {
+    document.getElementById('successMsg').style.display = 'block';
+    document.getElementById('contactForm').reset();
+  }
+}
     
   </script>
 </body>
