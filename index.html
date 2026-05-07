@@ -45,6 +45,7 @@
     footer { text-align: center; padding: 1.5rem; font-size: 13px; background: #1a1a2e; color: #666; }
     .section { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .section.visible { opacity: 1; transform: translateY(0); }
+    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body>
@@ -52,7 +53,9 @@
 <nav style="position:relative;">
   <div style="display:flex; align-items:center;">
     <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.10/dist/dotlottie-wc.js" type="module"></script>
-    <dotlottie-wc src="https://lottie.host/b6abcf63-75bb-45d5-a761-fa2f920f7e71/VUo8lpSrtG.lottie" style="width:65px; height:65px" autoplay loop></dotlottie-wc>
+    <a href="#home" style="display:flex; align-items:center;">
+  <dotlottie-wc src="https://lottie.host/b6abcf63-75bb-45d5-a761-fa2f920f7e71/VUo8lpSrtG.lottie" style="width:65px; height:65px" autoplay loop></dotlottie-wc>
+     </a>
   </div>
   <div style="display:flex; gap:2rem; position:absolute; left:50%; transform:translateX(-50%);">
     <a href="#home">Home</a>
