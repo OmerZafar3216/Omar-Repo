@@ -7,8 +7,7 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Segoe UI', sans-serif; background: #f0f2f8; color: #222; padding-top: 0; }
-  nav { background: rgba(26,26,46,0.85); padding: 10px 2rem; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(8px); transition: background 0.3s, opacity 0.3s; opacity: 0; }
-nav:hover { opacity: 1; }
+ nav { background: rgba(26,26,46,0.85); padding: 10px 2rem; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(8px); transition: background 0.3s; }
     nav a { color: #ccc; text-decoration: none; font-size: 14px; letter-spacing: 0.05em; transition: color 0.2s; }
     nav a:hover { color: #fff; }
     .carousel-wrapper { position: relative; width: 100%; overflow: hidden; }
@@ -318,10 +317,6 @@ document.querySelectorAll('.section').forEach(s => observer.observe(s));
   }
 }
 
-    window.addEventListener('scroll', () => {
-  const nav = document.querySelector('nav');
-  nav.style.opacity = window.scrollY > 100 ? '0' : '1';
-});
   </script>
 </body>
 </html>
